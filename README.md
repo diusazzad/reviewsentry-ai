@@ -5,12 +5,19 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python: 3.11+](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](https://www.python.org/)
 [![Tests: 20 Passed](https://img.shields.io/badge/Pytest-20%20Passed%20(100%25)-success.svg)](test_reviewsentry.py)
-[![Deploy on Render](https://img.shields.io/badge/Deploy%20on-Render-46E3B7.svg?logo=render&logoColor=white)](render.yaml)
+[![Deploy on Render](https://img.shields.io/badge/Live%20on-Render-46E3B7.svg?logo=render&logoColor=white)](https://reviewsentry-ai.onrender.com/)
 [![Powered by: Backboard](https://img.shields.io/badge/AI%20Engine-Backboard%20%2B%20Gemma%202-orange.svg)](https://backboard.io)
+
+> 🌐 **Live Demo Workbench:** [https://reviewsentry-ai.onrender.com/](https://reviewsentry-ai.onrender.com/)  
+> 📑 **Interactive OpenAPI Docs:** [https://reviewsentry-ai.onrender.com/docs](https://reviewsentry-ai.onrender.com/docs)
 
 ---
 
 ## 📌 What is ReviewSentry AI?
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/diusazzad/reviewsentry-ai/main/static/dashboard_preview.svg" alt="ReviewSentry AI Glassmorphism Dashboard Workbench" width="100%">
+</p>
 
 Independent restaurants, cafes, boutiques, salons, and dental clinics face an existential threat every week: **fraudulent 1-star reviews, competitor smear campaigns, and extortion attempts on Google Maps and Yelp.**
 
@@ -43,15 +50,15 @@ ReviewSentry AI bridges this gap through a **3-Layer Hybrid Defense System**:
 
 ```mermaid
 flowchart TD
-    A[Customer Review Input] --> B[Layer 1: Deterministic Policy Rule Engine]
-    B -->|Regex Keyword Graph| C{Policy Violation Detected?}
-    C -->|Yes: Disputable| D[Structured Evidence & Policy Clause Context]
-    C -->|No: Genuine Feedback| E[Customer De-escalation Recovery Context]
-    D --> F[Layer 2: Backboard SDK + Google Gemma 2 Synthesis]
+    A["Customer Review Input"] --> B["Layer 1: Deterministic Policy Engine"]
+    B -->|"Regex Keyword Graph"| C{"Policy Violation Detected?"}
+    C -->|"Yes: Disputable"| D["Structured Evidence & Policy Clause Context"]
+    C -->|"No: Genuine Feedback"| E["Customer De-escalation Recovery Context"]
+    D --> F["Layer 2: Backboard SDK + Google Gemma 2 Synthesis"]
     E --> F
-    F --> G[Layer 3: UI Output Sanitizer]
-    G --> H[Formal Google Legal Dispute Notice]
-    G --> I[3-Tier Diplomatic Public Responses]
+    F --> G["Layer 3: UI Output Sanitizer"]
+    G --> H["Formal Google Legal Dispute Notice"]
+    G --> I["3-Tier Diplomatic Public Responses"]
 ```
 
 ---
