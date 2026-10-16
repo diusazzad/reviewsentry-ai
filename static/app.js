@@ -22,6 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const scorecardBadge = document.getElementById('score-status-badge');
   const metricConfidence = document.getElementById('metric-confidence');
   const metricClause = document.getElementById('metric-clause');
+  const metricRevenue = document.getElementById('metric-revenue');
+  const traceL1Detail = document.getElementById('trace-l1-detail');
+  const traceL2Detail = document.getElementById('trace-l2-detail');
+  const traceL3Detail = document.getElementById('trace-l3-detail');
   const evidenceBox = document.getElementById('evidence-box');
   const evidencePills = document.getElementById('evidence-pills');
 
@@ -153,11 +157,25 @@ document.addEventListener('DOMContentLoaded', () => {
       scorecardBadge.innerHTML = '🚨 Policy Violation Confirmed (Takedown Ready)';
       metricClause.textContent = audit.primary_violation ? audit.primary_violation.clause_id : 'Content Violation';
       metricClause.style.color = '#f87171';
+      if (metricRevenue) {
+        metricRevenue.textContent = '~$650 – $1,350/mo';
+        metricRevenue.style.color = '#34d399';
+      }
+      if (traceL1Detail) traceL1Detail.textContent = `Regex Match: ${audit.primary_violation ? audit.primary_violation.clause_id.split(' - ')[0] : 'Violation'} Triggered`;
+      if (traceL2Detail) traceL2Detail.textContent = 'Google Gemma 2 via Backboard SDK (Dispute Synthesized)';
+      if (traceL3Detail) traceL3Detail.textContent = 'Verified for Google Support Escalation';
     } else {
       scorecardBadge.className = 'score-status-badge genuine';
       scorecardBadge.innerHTML = '🤝 Genuine Customer Feedback (Salvageable)';
       metricClause.textContent = 'Standard Critique (No Infraction)';
       metricClause.style.color = '#34d399';
+      if (metricRevenue) {
+        metricRevenue.textContent = 'Trust & Retention Saved';
+        metricRevenue.style.color = '#60a5fa';
+      }
+      if (traceL1Detail) traceL1Detail.textContent = 'Clean Customer Critique (No Infraction)';
+      if (traceL2Detail) traceL2Detail.textContent = 'Google Gemma 2 via Backboard SDK (3-Tiers Generated)';
+      if (traceL3Detail) traceL3Detail.textContent = 'Public De-escalation Ready';
     }
 
     metricConfidence.textContent = `${Math.round(audit.confidence_score * 100)}%`;

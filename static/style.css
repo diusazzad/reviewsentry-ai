@@ -535,6 +535,62 @@ body {
   color: #fff;
 }
 
+/* 3-Layer Defense Pipeline Execution Trace */
+.pipeline-trace {
+  background: rgba(10, 14, 23, 0.9);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.trace-header {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.trace-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.trace-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.82rem;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 6px 10px;
+  border-radius: 6px;
+  border-left: 3px solid var(--accent-green);
+  flex-wrap: wrap;
+}
+
+.trace-check {
+  color: var(--accent-green);
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.trace-name {
+  font-weight: 600;
+  color: #f3f4f6;
+}
+
+.trace-detail {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: #93c5fd;
+  margin-left: auto;
+}
+
 /* Evidence Box */
 .evidence-box {
   background: rgba(239, 68, 68, 0.05);
