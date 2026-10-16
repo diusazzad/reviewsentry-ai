@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReviewSentry AI — Reputation Defense & Fake Review Dispute Engine</title>
+  <meta name="description" content="AI-Powered Google Maps & Yelp Review Policy Audit, Legal Dispute Generator, and Customer De-escalation Engine for Local Businesses and Freelancers.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="background-mesh"></div>
+
+  <!-- Header & Navigation -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="logo-group">
+        <div class="logo-shield">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title">ReviewSentry <span class="badge-ai">AI</span></div>
+          <div class="brand-subtitle">Google Maps & Yelp Dispute Engine for Local Businesses</div>
+        </div>
+      </div>
+      <div class="header-badges">
+        <span class="pill-badge pill-backboard" id="badge-backboard">
+          <span class="status-dot green"></span> Backboard SDK / Gemma 2
+        </span>
+        <span class="pill-badge pill-render">
+          <span class="status-dot pulse"></span> Render Cloud Live
+        </span>
+        <a href="/docs" target="_blank" class="api-docs-link">API Docs &rarr;</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Hero & Workstation -->
+  <main class="main-layout">
+    
+    <!-- Left Column: Input Form & Samples -->
+    <section class="panel input-panel">
+      <div class="panel-header">
+        <h1 class="panel-title">Review Audit Workbench</h1>
+        <p class="panel-desc">Paste an unfair 1-star review to detect Google Maps policy violations and generate takedown disputes.</p>
+      </div>
+
+      <!-- Quick Benchmark Sample Buttons -->
+      <div class="sample-section">
+        <div class="section-label">⚡ Benchmark Samples (Click to Test):</div>
+        <div class="sample-pills" id="sample-pills-container">
+          <!-- Dynamically populated or loaded via API -->
+          <button type="button" class="sample-btn" id="btn-sample-competitor" data-id="sample-competitor">
+            🎯 Competitor Attack
+          </button>
+          <button type="button" class="sample-btn" id="btn-sample-defamation" data-id="sample-defamation">
+            ⚖️ Defamation / Crime
+          </button>
+          <button type="button" class="sample-btn" id="btn-sample-extortion" data-id="sample-extortion">
+            🛑 Extortion / Blackmail
+          </button>
+          <button type="button" class="sample-btn" id="btn-sample-offtopic" data-id="sample-offtopic">
+            🚫 Off-Topic / Non-Visitor
+          </button>
+          <button type="button" class="sample-btn" id="btn-sample-genuine" data-id="sample-genuine">
+            🤝 Genuine Complaint
+          </button>
+        </div>
+      </div>
+
+      <form id="audit-form" class="audit-form">
+        <div class="form-row two-col">
+          <div class="input-group">
+            <label for="input-business-name">Business Profile Name</label>
+            <input type="text" id="input-business-name" value="Brew & Bites Artisan Cafe" required>
+          </div>
+          <div class="input-group">
+            <label for="input-reviewer-name">Reviewer Handle / Name</label>
+            <input type="text" id="input-reviewer-name" value="Anonymous User" required>
+          </div>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="input-group">
+            <label for="input-rating">Star Rating Given</label>
+            <select id="input-rating">
+              <option value="1" selected>★☆☆☆☆ (1 Star - Urgent)</option>
+              <option value="2">★★☆☆☆ (2 Stars - Critical)</option>
+              <option value="3">★★★☆☆ (3 Stars - Neutral)</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="input-competitors">Known Local Competitors (Optional)</label>
+            <input type="text" id="input-competitors" placeholder="e.g. NextDoor Cafe, Rival Roasters">
+          </div>
+        </div>
+
+        <div class="input-group">
+          <div class="label-with-counter">
+            <label for="input-review-text">Customer Review Text</label>
+            <span id="char-counter" class="char-counter">0 chars</span>
+          </div>
+          <textarea id="input-review-text" rows="5" placeholder="Paste the customer review here (e.g. 'Worst coffee ever. Go to the other cafe next door instead...')" required></textarea>
+        </div>
+
+        <button type="submit" id="btn-analyze" class="btn-primary">
+          <span class="btn-text">🛡️ Run Policy Audit & Generate Dispute</span>
+          <span class="spinner" id="btn-spinner"></span>
+        </button>
+      </form>
+
+      <!-- Business Economics Banner -->
+      <div class="economics-card">
+        <div class="econ-icon">💡</div>
+        <div class="econ-text">
+          <strong>The Side Hustle Economics:</strong> Removing just 1 fraudulent 1-star review protects <strong>5%–9%</strong> of a local business's monthly revenue (Harvard Business School). Freelancers charge <strong>$29–$49/mo</strong> for this protection.
+        </div>
+      </div>
+    </section>
+
+    <!-- Right Column: Audit Results & Output -->
+    <section class="panel output-panel" id="output-panel">
+      
+      <!-- Placeholder State before Audit -->
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon">⚖️</div>
+        <h3>Ready to Audit Review Content</h3>
+        <p>Select a benchmark sample or paste a live review on the left to trigger the deterministic policy engine and Gemma 2 synthesis.</p>
+        <div class="rule-badges-preview">
+          <span class="rule-tag">§ 2.1 Conflict of Interest</span>
+          <span class="rule-tag">§ 3.2 Defamation</span>
+          <span class="rule-tag">§ 4.1 Extortion</span>
+          <span class="rule-tag">§ 1.4 Off-Topic</span>
+        </div>
+      </div>
+
+      <!-- Results Container (Hidden by default) -->
+      <div class="results-container" id="results-container" style="display: none;">
+        
+        <!-- Scorecard Header -->
+        <div class="audit-scorecard" id="audit-scorecard">
+          <div class="score-status-badge" id="score-status-badge">
+            <!-- Disputable or Genuine -->
+          </div>
+          <div class="score-meta">
+            <div class="score-metric">
+              <span class="metric-label">Policy Confidence:</span>
+              <span class="metric-val" id="metric-confidence">95%</span>
+            </div>
+            <div class="score-metric">
+              <span class="metric-label">Primary Grounds:</span>
+              <span class="metric-val" id="metric-clause">Google Maps § 2.1</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Evidence Snippets Tagging -->
+        <div class="evidence-box" id="evidence-box">
+          <div class="evidence-title">🚩 Identified Violation Evidence in Text:</div>
+          <div class="evidence-pills" id="evidence-pills"></div>
+        </div>
+
+        <!-- Tab Switches for Output -->
+        <div class="output-tabs" id="output-tabs">
+          <button type="button" class="tab-btn active" id="tab-dispute-btn">📑 Official Legal Dispute Notice</button>
+          <button type="button" class="tab-btn" id="tab-response-btn">💬 Diplomatic Customer Responses</button>
+        </div>
+
+        <!-- Dispute Notice Tab Content -->
+        <div class="tab-content" id="tab-dispute-content">
+          <div class="output-action-bar">
+            <span class="output-hint">Submit this formal notice via Google Business Profile Support &rarr; Manage Reviews &rarr; Dispute</span>
+            <button type="button" class="btn-copy" id="btn-copy-dispute">
+              📋 Copy Notice
+            </button>
+          </div>
+          <pre class="code-preview" id="dispute-notice-text"></pre>
+        </div>
+
+        <!-- Diplomatic Responses Tab Content -->
+        <div class="tab-content" id="tab-response-content" style="display: none;">
+          <div class="output-action-bar">
+            <span class="output-hint">Post directly as the business owner to retain trust and demonstrate accountability</span>
+          </div>
+
+          <div class="response-cards">
+            <div class="resp-card">
+              <div class="resp-card-header">
+                <span class="resp-tag empathetic">❤️ Empathetic & Apologetic</span>
+                <button type="button" class="btn-copy-sm" data-target="resp-empathetic">Copy</button>
+              </div>
+              <p class="resp-text" id="resp-empathetic"></p>
+            </div>
+
+            <div class="resp-card">
+              <div class="resp-card-header">
+                <span class="resp-tag action">🛠️ Action-Oriented & Corrective</span>
+                <button type="button" class="btn-copy-sm" data-target="resp-action">Copy</button>
+              </div>
+              <p class="resp-text" id="resp-action"></p>
+            </div>
+
+            <div class="resp-card">
+              <div class="resp-card-header">
+                <span class="resp-tag concise">⚡ Concise & Professional</span>
+                <button type="button" class="btn-copy-sm" data-target="resp-concise">Copy</button>
+              </div>
+              <p class="resp-text" id="resp-concise"></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer with Open Innovation Transparency -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        ReviewSentry AI &bull; Built for <strong>Hacktoberfest 2026 Week 2 (Side Hustle)</strong>
+      </div>
+      <div class="footer-right">
+        Powered by <strong>Google Gemma 2</strong> &bull; Backboard API &bull; Deployed on <strong>Render</strong>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
